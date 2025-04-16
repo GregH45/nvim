@@ -155,6 +155,7 @@ local lsp = {
     --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     local servers = {
+      bashls = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
