@@ -20,5 +20,4 @@ local neo_tree = {
     vim.keymap.set('n', '\\', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree', silent = true })
   end,
 }
-
 return neo_tree

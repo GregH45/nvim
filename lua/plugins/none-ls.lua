@@ -5,7 +5,6 @@ return {
   },
   config = function()
     local null_ls = require 'null-ls'
-
     require('mason-null-ls').setup {
       ensure_installed = {
         'shfmt',
@@ -18,8 +17,7 @@ return {
       debug = true, -- enable for troubleshooting
       sources = {
         -- Shell
-        -- null_ls.builtins.formatting.shfmt,
-        null_ls.builtins.diagnostics.shellcheck,
+        null_ls.builtins.formatting.shfmt,
 
         -- YAML / JSON
       },
