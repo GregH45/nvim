@@ -15,6 +15,11 @@ vim.list_extend(ensure_installed, {
   'stylua',
   'shfmt',
   'shellcheck',
+  'dockerls',
+  'docker_compose_language_service',
+  'hadolint',
+  'terraform-ls',
+  'pylsp',
 })
 return {
   'WhoIsSethDaniel/mason-tool-installer.nvim',

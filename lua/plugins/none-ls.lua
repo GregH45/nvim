@@ -16,10 +16,9 @@ return {
     null_ls.setup {
       debug = true, -- enable for troubleshooting
       sources = {
-        -- Shell
         null_ls.builtins.formatting.shfmt,
-
-        -- YAML / JSON
+        null_ls.builtins.diagnostics.hadolint,
+        null_ls.builtins.formatting.terraform_fmt,
       },
     }
   end,

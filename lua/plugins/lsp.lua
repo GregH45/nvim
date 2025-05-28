@@ -155,7 +155,29 @@ local lsp = {
     --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     local servers = {
+      terraform_ls = {},
+      dockerls = {},
+      docker_compose_language_service = {},
       bashls = {},
+      pylsp = {
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = {
+                enabled = true,
+                maxLineLength = 100,
+              },
+              pylint = { enabled = false },
+              pyflakes = { enabled = true },
+              yapf = { enabled = false }, -- prefer black or ruff
+              black = {
+                enabled = true,
+                line_length = 100,
+              },
+            },
+          },
+        },
+      },
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
