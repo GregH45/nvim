@@ -47,8 +47,18 @@ return {
 			vim.lsp.enable("bashls")
 
 			-- Setup for python
-			vim.lsp.config("pyright", {})
-			vim.lsp.enable("pyright")
+			vim.lsp.config("pylsp", {
+				settings = {
+					pylsp = {
+						plugins = {
+							jedi = {
+								environment = vim.fn.getcwd() .. "/venv"
+							}
+						}
+					}
+				}
+			})
+			vim.lsp.enable("pylsp")
 
 			-- Setup for lua
 			vim.lsp.config("lua_ls", {
