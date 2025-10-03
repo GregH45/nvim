@@ -22,7 +22,9 @@ return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
   opts = {
-    indent = { highlight = highlight },
+    indent = {
+      highlight = highlight 
+    },
     scope = { enabled = true, highlight = highlight },
   },
   config = function(_, opts)
