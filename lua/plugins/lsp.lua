@@ -52,11 +52,11 @@ return {
 					pylsp = {
 						plugins = {
 							jedi = {
-								environment = vim.fn.getcwd() .. "/venv"
-							}
-						}
-					}
-				}
+								environment = vim.fn.getcwd() .. "/venv",
+							},
+						},
+					},
+				},
 			})
 			vim.lsp.enable("pylsp")
 
@@ -76,7 +76,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("mason").setup()
+			require("mason").setup({ auto_update = true })
 		end,
 	},
 	{
