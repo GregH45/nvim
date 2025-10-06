@@ -34,8 +34,10 @@ require("lazy").setup({
 		{ import = "plugins.toggleterm" },
 		{ import = "plugins.web-devicons" },
 		{ import = "plugins.which-key" },
+		{ import = "plugins.lint" },
+		{ import = "plugins.treesitter" },
+		{ import = "plugins.comment" },
 		{ import = "plugins.conform" },
-
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.

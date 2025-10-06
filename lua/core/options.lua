@@ -28,6 +28,12 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+	end,
+})
+
 vim.opt.confirm = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
