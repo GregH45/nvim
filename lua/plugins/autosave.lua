@@ -5,7 +5,7 @@ local pocco = {
 			enabled = true, -- active l'auto-save au démarrage
 		 execution_message = {
 			 message = function()
-				 return ("autosave: saved at " .. vim.fn.strftime("%h:%m:%s"))
+				 return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
 			 end,
 			 dim = 0.18,
 			 cleaning_interval = 1250,

@@ -35,6 +35,7 @@ require("lazy").setup({
 		{ import = "plugins.web-devicons" },
 		{ import = "plugins.which-key" },
 		{ import = "plugins.conform" },
+
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
