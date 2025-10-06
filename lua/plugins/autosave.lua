@@ -1,29 +1,32 @@
-return {
-	"Pocco81/auto-save.nvim",
+local pocco = {
+	"pocco81/auto-save.nvim",
 	config = function()
 		require("auto-save").setup({
 			enabled = true, -- active l'auto-save au démarrage
-			execution_message = {
-				message = function()
-					return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
-				end,
-				dim = 0.18,
-				cleaning_interval = 1250,
-			},
-			trigger_events = { "InsertLeave", "TextChanged" }, -- quand déclencher la sauvegarde
-			condition = function(buf)
-				local fn = vim.fn
-				local utils = require("auto-save.utils.data")
-				if
-					fn.getbufvar(buf, "&modifiable") == 1
-					and utils.not_in(fn.getbufvar(buf, "&filetype"), { "gitcommit" })
-				then
-					return true
-				end
-				return false
-			end,
-			write_all_buffers = false, -- ne sauvegarde que le buffer courant
-			debounce_delay = 135,
-		})
-	end,
+		 execution_message = {
+			 message = function()
+				 return ("autosave: saved at " .. vim.fn.strftime("%h:%m:%s"))
+			 end,
+			 dim = 0.18,
+			 cleaning_interval = 1250,
+		 },
+		 trigger_events = { "insertleave", "textchanged" }, -- quand déclencher la sauvegarde
+	  condition = function(buf)
+		  local fn = vim.fn
+		  local utils = require("auto-save.utils.data")
+		  if
+			  fn.getbufvar(buf, "&modifiable") == 1
+			  and utils.not_in(fn.getbufvar(buf, "&filetype"), { "gitcommit" })
+		  then
+			  return true
+		  end
+		  return false
+	  end,
+	  write_all_buffers = false, -- ne sauvegarde que le buffer courant
+	  debounce_delay = 135,
+  })  end,
 }
+
+local okuuva = { "okuuva/auto-save.nvim", version = "*", cmd = "ASToggle", event = { "InsertLeave", "TextChanged" } }
+
+return okuuva
