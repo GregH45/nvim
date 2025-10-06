@@ -11,8 +11,15 @@ return {
 			local map = function(keys, func, desc)
 				vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
 			end
-
-			map("gd", vim.lsp.buf.definition, "Goto Definition")
+			if client.supports_method("textDocument/formatting") then
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
+					buffer = bufnr,
+					callback = function()
+						require("conform").format({ bufnr = bufnr })
+					end,
+				})
+			end
 			map("K", vim.lsp.buf.hover, "Hover")
 
 			local builtin = require("telescope.builtin")
@@ -24,16 +31,6 @@ return {
 
 			map("grn", vim.lsp.buf.rename, "Rename")
 			map("gra", vim.lsp.buf.code_action, "Code Action")
-
-			if client.supports_method("textDocument/formatting") then
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
-					buffer = bufnr,
-					callback = function()
-						vim.lsp.buf.format({ bufnr = bufnr })
-					end,
-				})
-			end
 		end
 
 		-- Global LSP settings
@@ -47,11 +44,6 @@ return {
 			virtual_text = true,
 		})
 
-		-- Bash
-		vim.lsp.config("bashls", {})
-		vim.lsp.enable("bashls")
-
-		-- Python
 		vim.lsp.config("pylsp", {
 			settings = {
 				pylsp = {
@@ -64,6 +56,10 @@ return {
 			},
 		})
 		vim.lsp.enable("pylsp")
+
+		-- Bash
+		vim.lsp.config("bashls", {})
+		vim.lsp.enable("bashls")
 
 		-- Lua
 		vim.lsp.config("lua_ls", {

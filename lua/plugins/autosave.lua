@@ -1,5 +1,5 @@
-return {
-	"Pocco81/auto-save.nvim",
+local pocco = {
+	"pocco81/auto-save.nvim",
 	config = function()
 		require("auto-save").setup({
 			enabled = true, -- active l'auto-save au démarrage
@@ -10,7 +10,7 @@ return {
 			 dim = 0.18,
 			 cleaning_interval = 1250,
 		 },
-		 trigger_events = { "InsertLeave", "TextChanged" }, -- quand déclencher la sauvegarde
+		 trigger_events = { "insertleave", "textchanged" }, -- quand déclencher la sauvegarde
 	  condition = function(buf)
 		  local fn = vim.fn
 		  local utils = require("auto-save.utils.data")
@@ -26,3 +26,7 @@ return {
 	  debounce_delay = 135,
   })  end,
 }
+
+local okuuva = { "okuuva/auto-save.nvim", version = "*", cmd = "ASToggle", event = { "InsertLeave", "TextChanged" } }
+
+return okuuva

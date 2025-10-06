@@ -21,7 +21,21 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		-- import your plugins
-		{ import = "plugins" },
+		{ import = "plugins.autosave" },
+		{ import = "plugins.completion" },
+		{ import = "plugins.gitsigns" },
+		{ import = "plugins.indent-blankline" },
+		{ import = "plugins.lsp" },
+		{ import = "plugins.lualine" },
+		{ import = "plugins.mason" },
+		{ import = "plugins.neo-tree" },
+		{ import = "plugins.telescope" },
+		{ import = "plugins.theme" },
+		{ import = "plugins.toggleterm" },
+		{ import = "plugins.web-devicons" },
+		{ import = "plugins.which-key" },
+		{ import = "plugins.conform" },
+
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
