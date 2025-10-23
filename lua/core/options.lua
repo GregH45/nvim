@@ -39,3 +39,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+-- Folding
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
+
