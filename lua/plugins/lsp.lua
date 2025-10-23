@@ -35,7 +35,7 @@ return {
 			map("gra", vim.lsp.buf.code_action, "Code Action")
 
 			-- Autoformat on save
-			if client.supports_method("textDocument/formatting") then
+			if client.name ~= "yamlls" and client.supports_method("textDocument/formatting") then
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
 					buffer = bufnr,
@@ -46,6 +46,13 @@ return {
 			end
 		end
 
+		vim.diagnostic.config({
+			virtual_text = true,
+			signs = true,
+			underline = true,
+			update_in_insert = false,
+			severity_sort = true,
+		})
 		-- Python
 		vim.lsp.config("pylsp", {
 			capabilities = capabilities,
@@ -82,7 +89,7 @@ return {
 			settings = {
 				yaml = {
 					validate = true,
-					format = { enable = true },
+					format = { enable = false },
 					hover = true,
 					completion = true,
 					keyOrdering = false,
