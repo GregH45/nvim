@@ -1,14 +1,21 @@
 -- /lua/plugins/toggleterm.lua
 return {
-	"akinsho/toggleterm.nvim",
-	version = "*",
+	"Dan7h3x/neaterm.nvim",
+	event = "VeryLazy",
 	opts = {
-		direction = "float",
-		close_on_exit = true,
-		on_open = function(term)
-			vim.keymap.set("t", "<Esc><Esc>", function()
-				vim.cmd("ToggleTerm direction=float")
-			end, { buffer = term.bufnr })
-		end,
+		float_width = 0.8,
+		float_height = 0.5,
+		border = "rounded",
+		use_default_keymaps = true,
+		terminals = {
+			main = {
+				name = "MainShell",
+				type = "float",
+			},
+		},
+		keymaps = {
+			toggle = "<leader>tt",
+			new_float = "<leader>tf",
+		},
 	},
 }

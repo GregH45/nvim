@@ -115,5 +115,9 @@ return {
 			},
 		})
 		vim.lsp.enable("yamlls")
+
+		-- Docker
+		vim.lsp.config("dockerls", { capabilities = capabilities, on_attach = on_attach })
+		vim.lsp.enable("dockerls")
 	end,
 }

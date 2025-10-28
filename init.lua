@@ -1,4 +1,5 @@
 -- init.lua
+vim.o.shell = "/bin/bash"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -37,6 +38,7 @@ require("lazy").setup({
 		{ import = "plugins.treesitter" },
 		{ import = "plugins.comment" },
 		{ import = "plugins.conform" },
+		{ import = "plugins.snippets" },
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
