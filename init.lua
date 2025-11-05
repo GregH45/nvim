@@ -39,6 +39,7 @@ require("lazy").setup({
 		{ import = "plugins.comment" },
 		{ import = "plugins.conform" },
 		{ import = "plugins.snippets" },
+		{ import = "plugins.tiny-inline-diagnostic" },
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
