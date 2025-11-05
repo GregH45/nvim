@@ -119,5 +119,9 @@ return {
 		-- Docker
 		vim.lsp.config("dockerls", { capabilities = capabilities, on_attach = on_attach })
 		vim.lsp.enable("dockerls")
+
+		-- Markdown
+		vim.lsp.config("marksman", { capabilities = capabilities, on_attach = on_attach })
+		vim.lsp.enable("marksman")
 	end,
 }

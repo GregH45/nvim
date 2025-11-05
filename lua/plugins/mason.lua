@@ -14,6 +14,7 @@ return {
 				"bashls",
 				"pylsp",
 				"yamlls",
+				"marksman",
 			},
 		})
 	end,
