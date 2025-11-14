@@ -41,7 +41,6 @@ Here is a list of all the plugins used in this configuration:
 *   **[nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)**: Plenary utility library for Neovim plugins.
 *   **[MunifTanjim/nui.nvim](https://github.com/MunifTanjim/nui.nvim)**: UI Component Library for Neovim.
 *   **[nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)**: A highly extendable fuzzy finder over lists.
-*   **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)**: A retro groove color scheme for Vim.
 *   **[akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)**: A Neovim plugin to persist and toggle terminals during sessions.
 *   **[nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)**: Neovim Treesitter configurations and abstraction layer.
 *   **[nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)**: A web-devicons plugin for Neovim.

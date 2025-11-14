@@ -1,4 +1,5 @@
 -- /lua/plugins/lsp.lua
+-- Main LSP configuration with shared settings
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
@@ -16,9 +17,15 @@ return {
 		},
 	},
 	config = function()
+		-- Shared LSP capabilities
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		local kubernetes = require("kubernetes")
+		-- Add folding capabilities for nvim-ufo
+		capabilities.textDocument.foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
+		}
 
+		-- Shared on_attach function for all LSP servers
 		local on_attach = function(client, bufnr)
 			local map = function(keys, func, desc)
 				vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
@@ -46,13 +53,22 @@ return {
 			end
 		end
 
+		-- Global diagnostic configuration
 		vim.diagnostic.config({
-			virtual_text = false,
+			virtual_text = {
+				spacing = 4,
+				prefix = "●",
+			},
 			signs = true,
 			underline = true,
 			update_in_insert = false,
 			severity_sort = true,
 		})
+
+		-- ============================================================
+		-- Language Server Configurations
+		-- ============================================================
+
 		-- Python
 		vim.lsp.config("pylsp", {
 			capabilities = capabilities,
@@ -81,40 +97,8 @@ return {
 		})
 		vim.lsp.enable("lua_ls")
 
-		-- YAML + Kubernetes + Kustomize
-		local yamlls_schema = kubernetes.yamlls_schema()
-		vim.lsp.config("yamlls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				yaml = {
-					validate = true,
-					format = { enable = false },
-					hover = true,
-					completion = true,
-					keyOrdering = false,
-					schemaStore = { enable = false },
-					schemas = {
-						[yamlls_schema] = { "*.yaml", "*.yml" },
-						["https://json.schemastore.org/kustomization.json"] = {
-							"kustomization.yaml",
-							"kustomization.yml",
-						},
-					},
-					customTags = {
-						"!Ref scalar",
-						"!Sub scalar",
-						"!GetAtt scalar",
-						"!GetAtt sequence",
-						"!ImportValue scalar",
-						"!Join sequence",
-						"!Split sequence",
-						"!Select sequence",
-					},
-				},
-			},
-		})
-		vim.lsp.enable("yamlls")
+		-- YAML + Kubernetes + Helm (complex config extracted to separate module)
+		require("config.yaml-k8s")(capabilities, on_attach)
 
 		-- Docker
 		vim.lsp.config("dockerls", { capabilities = capabilities, on_attach = on_attach })

@@ -6,7 +6,7 @@ return {
 	},
 	config = function()
 		require("mason").setup({
-			ensure_installed = { "stylua", "isort", "black", "beautysh", "prettier" },
+			ensure_installed = { "stylua", "isort", "black", "beautysh", "prettier", "yamllint", "yamlfmt" },
 		})
 		require("mason-lspconfig").setup({
 			ensure_installed = {
@@ -15,6 +15,7 @@ return {
 				"pylsp",
 				"yamlls",
 				"marksman",
+				"helm_ls",
 			},
 		})
 	end,
