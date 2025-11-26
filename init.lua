@@ -2,9 +2,8 @@ vim.g.mapleader = " "
 
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/vague2k/vague.nvim" },
+	{ src = "https://github.com/sainnhe/gruvbox-material"},
 	{ src = "https://github.com/nvim-mini/mini.comment" },
-	{ src = "https://github.com/folke/lazydev.nvim" },
 	{ src = "https://github.com/saghen/blink.cmp",                       version = '1.*' },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -19,13 +18,11 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 })
 
-require 'lazydev'.setup()
 require 'configs.options'
 require 'configs.comands'
 require 'configs.keymap'
 require 'plugins.blink'
--- require 'plugins.which-key'
 require 'plugins.telescope'
 require 'plugins.neo-tree'
+require 'plugins.lsp'
 
-vim.lsp.enable({ 'lua_ls' })
